@@ -1,4 +1,3 @@
-# guardrails/output_filter.py
 def validate_agent_output(text: str) -> str:
     sensitive_keywords = ["workout", "diet", "fasting"]
     if any(word in text.lower() for word in sensitive_keywords):

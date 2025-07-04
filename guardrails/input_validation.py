@@ -1,10 +1,8 @@
-# guardrails/input_validation.py
 import chainlit as cl
 
 async def on_user_message(message: cl.Message) -> bool:
     content = message.content.strip()
 
-    # Basic input validations
     if not content:
         await cl.Message(content="❌ Please enter a message.").send()
         return False

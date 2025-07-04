@@ -125,7 +125,6 @@ async def main(message: cl.Message):
     config: RunConfig = cast(RunConfig, cl.user_session.get("config"))
 
     try:
-        # ✅ Lifecycle Hook: Start
         await on_agent_start_handler(history)
 
         history.append({"role": "user", "content": message.content})
@@ -142,14 +141,12 @@ async def main(message: cl.Message):
         msg.content = validate_agent_output(msg.content)
         await msg.update()
 
-        # ✅ Save to DB
         chat_collection.insert_one({
             "user_message": message.content,
             "assistant_reply": msg.content,
             "timestamp": datetime.utcnow()
         })
 
-        # ✅ Lifecycle Hook: End
         await on_agent_end_handler(msg.content)
 
         print(f"User: {message.content}")
