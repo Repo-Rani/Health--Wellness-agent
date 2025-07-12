@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from typing import cast
 import chainlit as cl
 from agents import Agent, Runner, AsyncOpenAI, OpenAIChatCompletionsModel
-from agents.run import RunConfig
+from agents import RunConfig
 from tools.goal_analyzer import analyze_goals
 from tools.meal_planner import meal_plan
 from tools.scheduler import schedule_checking
